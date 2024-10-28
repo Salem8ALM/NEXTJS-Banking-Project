@@ -7,7 +7,6 @@ import { redirect } from "next/navigation";
 
 export async function login(formData) {
   const userData = Object.fromEntries(formData);
-  // const userData = { username, password };
 
   const response = await fetch(`${baseUrl}/mini-project/api/auth/login`, {
     method: "POST",
@@ -56,4 +55,14 @@ export async function getAllUsers() {
   const response = await fetch(`${baseUrl}/mini-project/api/auth/users`);
   const users = await response.json();
   return users;
+}
+export async function viewDeposite() {
+  const response = await fetch(
+    `${baseUrl}/mini-project/api/transactions/deposit`,
+    {
+      method: "PUT",
+      headers: await getHeaders(),
+      body: JSON.stringify(response),
+    }
+  );
 }

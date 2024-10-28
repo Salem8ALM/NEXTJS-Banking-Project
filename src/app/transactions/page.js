@@ -1,14 +1,14 @@
-"use client";
+// "use client";
 import React from "react";
-// import TransactionsList from "../components/AddTransactionModal/Transaction";
+import Transactions from "../components/AddTransactionModal/Transaction";
 
-function Transactions() {
+function TransactionsPage() {
   return (
     <div>
       <h1>A list of transactions should be here</h1>
-      {/* <TransactionsList /> */}
+      <Transactions />
     </div>
   );
 }
 
-export default Transactions;
+export default TransactionsPage;

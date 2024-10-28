@@ -7,6 +7,8 @@ export default function Home() {
         <h1 className="text-white text-3xl mt-40 font-bold font-mono">
           Welcome to Bank Al-Falas
         </h1>
+
+        <h2>ADD BALANCE AND TRANSACTION FUNCTION HERE</h2>
       </div>
     </div>
   );
