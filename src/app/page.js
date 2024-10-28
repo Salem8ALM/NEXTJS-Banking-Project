@@ -9,6 +9,7 @@ export default function Home() {
         </h1>
 
         <h2>ADD BALANCE AND TRANSACTION FUNCTION HERE</h2>
+        <p>To get started, please register here</p>
       </div>
     </div>
   );

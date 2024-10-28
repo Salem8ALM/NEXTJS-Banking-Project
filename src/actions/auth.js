@@ -47,13 +47,15 @@ export async function viewProfile() {
     headers: await getHeaders(),
   });
   const user = await response.json();
-  revalidatePath("/users/me");
   return user;
 }
 
 export async function getAllUsers() {
-  const response = await fetch(`${baseUrl}/mini-project/api/auth/users`);
-  const users = await response.json();
+  const response = await fetch(`${baseUrl}/mini-project/api/auth/users`, {
+    method: "GET",
+    headers: await getHeaders(),
+  });
+  const users = response.json();
   return users;
 }
 export async function viewDeposite() {
