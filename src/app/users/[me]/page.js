@@ -1,12 +1,14 @@
 import React from "react";
-import Auth from "src/actions/auth.js";
+import { viewProfile } from "@/actions/auth";
 
-function Profile() {
+async function Profile() {
+  const profile = await viewProfile();
   return (
     <div>
       All my Details should be here
       <br></br>
-      <Auth viewProfile={viewProfile} />
+      <h1>{profile.username}</h1>
+      <h2>{profile.balance}</h2>
     </div>
   );
 }

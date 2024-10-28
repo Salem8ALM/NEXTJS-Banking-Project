@@ -18,9 +18,6 @@ async function AuthButtons() {
         >
           Logout
         </button>
-        <button type="button" onClick={viewProfile}>
-          My Details
-        </button>
       </div>
     );
 
