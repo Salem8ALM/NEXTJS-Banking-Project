@@ -1,6 +1,6 @@
 "use client";
 
-import placeholder from "../images/"; // need to add photo
+// import placeholder from "../images/"; // need to add photo
 import Image from "next/image";
 import { useState } from "react";
 

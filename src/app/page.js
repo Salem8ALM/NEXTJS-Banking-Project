@@ -7,6 +7,7 @@ export default function Home() {
         <h1 className="text-white text-3xl mt-40 font-bold font-mono">
           Welcome to Bank Al-Falas
         </h1>
+        <p>To get started, please register here</p>
       </div>
     </div>
   );
