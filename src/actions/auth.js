@@ -1,39 +1,38 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { deleteToken, setToken } from "@/lib/token";
+import { deleteToken, setToken } from "../lib/token";
 import { baseUrl, getHeaders } from "./config";
 import { redirect } from "next/navigation";
 
 export async function login(formData) {
   const userData = Object.fromEntries(formData);
+  // const userData = { username, password };
 
-  const response = await fetch(`${baseUrl}/auth/login`, {
+  const response = await fetch(`${baseUrl}/mini-project/api/auth/login`, {
     method: "POST",
     headers: await getHeaders(),
     body: JSON.stringify(userData),
   });
-
   // Extract and store the token
   const { token } = await response.json();
   await setToken(token);
-  // Redirect to the `/notes` page
-  redirect("/notes");
+  // Redirect to the `/transactions` page
+  redirect("/transactions");
 }
 
 export async function register(formData) {
-  const response = await fetch(`${baseUrl}/auth/register`, {
+  const response = await fetch(`${baseUrl}/mini-project/api/auth/register`, {
     method: "POST",
     body: formData,
   });
 
-  // Extract and store the token
   const { token } = await response.json();
   await setToken(token);
 
-  revalidatePath("/users");
-  // Redirect to the `/notes` page
-  redirect("/notes");
+  revalidatePath("/transactions");
+
+  redirect("/transactions");
 }
 
 export async function logout() {
@@ -43,8 +42,18 @@ export async function logout() {
   redirect("/");
 }
 
+export async function viewProfile() {
+  const response = await fetch(`${baseUrl}/mini-project/api/auth/me`, {
+    method: "GET",
+    headers: await getHeaders(),
+  });
+  const user = await response.json();
+  revalidatePath("/users/me");
+  return user;
+}
+
 export async function getAllUsers() {
-  const response = await fetch(`${baseUrl}/auth/users`);
-  const users = response.json();
+  const response = await fetch(`${baseUrl}/mini-project/api/auth/users`);
+  const users = await response.json();
   return users;
 }
