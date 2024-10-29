@@ -1,7 +1,6 @@
 import { getUser } from "@/lib/token";
 import NavLink from "./NavLink";
 import { logout } from "@/actions/auth";
-import { viewProfile } from "@/actions/auth";
 
 async function AuthButtons() {
   // Actually check if there's a user!
