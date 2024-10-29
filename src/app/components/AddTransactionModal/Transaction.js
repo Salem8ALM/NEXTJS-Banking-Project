@@ -1,6 +1,7 @@
 // src/components/Transactions.js
 "use client";
 import { useState, useEffect } from "react";
+import Input from "../input";
 
 function Transactions() {
   const [transactions, setTransactions] = useState([]);
@@ -71,30 +72,26 @@ function Transactions() {
           className="border rounded p-2"
         />
         {/* Filter Buttons */}
-        <button
-          onClick={() => setFilterType("all")}
-          className="p-2 text-black bg-gray-200 rounded"
-        >
-          All
-        </button>
-        <button
+        <input type="radio" name="all" onClick={() => setFilterType("all")} />
+        <p className="text-white">All</p>
+        <input
+          type="radio"
+          name="deposit"
           onClick={() => setFilterType("deposit")}
-          className="p-2 text-black bg-gray-200 rounded"
-        >
-          Deposit
-        </button>
-        <button
+        />
+        <p className="text-white">Deposits</p>
+        <input
+          type="radio"
+          name="withdraw"
           onClick={() => setFilterType("withdraw")}
-          className="p-2 text-black bg-gray-200 rounded"
-        >
-          Withdraw
-        </button>
-        <button
+        />
+        <p className="text-white">Withdrawals</p>
+        <input
+          type="radio"
+          name="transfer"
           onClick={() => setFilterType("transfer")}
-          className="p-2 text-black bg-gray-200 rounded"
-        >
-          Transfer
-        </button>
+        />
+        <p className="text-white">Transfers</p>
         {/* Date Filters */}
         {/* <input
           type="date"

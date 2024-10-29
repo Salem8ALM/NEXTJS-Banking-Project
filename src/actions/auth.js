@@ -66,6 +66,16 @@ export async function viewDeposit(formData) {
     body: JSON.stringify(userData),
   });
 }
+
+export async function transactionList() {
+  const response = await fetch(`${baseUrl}/mini-project/api/transactions/my`, {
+    method: "GET",
+    headers: await getHeaders(),
+  });
+  const transaction = await response.json();
+  return transaction;
+}
+
 export async function viewWithdraw(formData) {
   const userData = Object.fromEntries(formData);
   await fetch(`${baseUrl}/mini-project/api/transactions/withdraw`, {

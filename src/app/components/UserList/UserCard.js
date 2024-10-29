@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ImageForUsers from "../ImageForUsers";
+import { baseUrl } from "@/actions/config";
 
 function UserCard({ user }) {
   return (
@@ -13,12 +14,12 @@ function UserCard({ user }) {
         width={200}
         height={200}
       />
-      {/* <Link
-        href={`/users/${user.id}`}
+      <Link
+        href={`/mini-project/api/transactions/transfer/${user.username}`}
         className="border border-black px-5 py-1 rounded-md hover:bg-[black] hover:text-white"
       >
-        View
-      </Link> */}
+        Transfer
+      </Link>
     </div>
   );
 }
