@@ -13,7 +13,7 @@ async function Navbar() {
           <div className="flex items-center">
             <Link href="/">
               <span className="font-semibold text-xl text-white">
-                Our Notes
+                Bank Alfalas
               </span>
             </Link>
           </div>
