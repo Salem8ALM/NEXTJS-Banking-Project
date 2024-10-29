@@ -7,7 +7,7 @@ function Transactions() {
   const [filteredTransactions, setFilteredTransactions] = useState([]);
   const [search, setSearch] = useState("");
   const [filterType, setFilterType] = useState("all");
-  const [dateRange, setDateRange] = useState({ startDate: "", endDate: "" });
+  // const [dateRange, setDateRange] = useState({ startDate: "", endDate: "" });
 
   useEffect(() => {
     // Fetch transactions from the API
@@ -42,21 +42,21 @@ function Transactions() {
   }, [filterType, transactions]);
 
   // Filter by date range
-  useEffect(() => {
-    const filtered = transactions.filter((transaction) => {
-      const transactionDate = new Date(transaction.date);
-      const startDate = dateRange.startDate
-        ? new Date(dateRange.startDate)
-        : null;
-      const endDate = dateRange.endDate ? new Date(dateRange.endDate) : null;
+  // useEffect(() => {
+  //   const filtered = transactions.filter((transaction) => {
+  //     const transactionDate = new Date(transaction.date);
+  //     const startDate = dateRange.startDate
+  //       ? new Date(dateRange.startDate)
+  //       : null;
+  //     const endDate = dateRange.endDate ? new Date(dateRange.endDate) : null;
 
-      if (startDate && transactionDate < startDate) return false;
-      if (endDate && transactionDate > endDate) return false;
+  //     if (startDate && transactionDate < startDate) return false;
+  //     if (endDate && transactionDate > endDate) return false;
 
-      return true;
-    });
-    setFilteredTransactions(filtered);
-  }, [dateRange, transactions]);
+  //     return true;
+  //   });
+  //   setFilteredTransactions(filtered);
+  // }, [dateRange, transactions]);
 
   return (
     <div className="transactions-page p-4 flex flex-col">
@@ -96,7 +96,7 @@ function Transactions() {
           Transfer
         </button>
         {/* Date Filters */}
-        <input
+        {/* <input
           type="date"
           value={dateRange.startDate}
           onChange={(e) =>
@@ -111,7 +111,7 @@ function Transactions() {
             setDateRange((prev) => ({ ...prev, endDate: e.target.value }))
           }
           className="border text-black rounded p-2"
-        />
+        /> */}
       </div>
       <div className="transactions-list space-y-2">
         {filteredTransactions.length ? (

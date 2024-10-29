@@ -58,13 +58,28 @@ export async function getAllUsers() {
   const users = response.json();
   return users;
 }
-export async function viewDeposite() {
-  const response = await fetch(
-    `${baseUrl}/mini-project/api/transactions/deposit`,
-    {
-      method: "PUT",
-      headers: await getHeaders(),
-      body: JSON.stringify(response),
-    }
-  );
+export async function viewDeposit(formData) {
+  const userData = Object.fromEntries(formData);
+  await fetch(`${baseUrl}/mini-project/api/transactions/deposit`, {
+    method: "PUT",
+    headers: await getHeaders(),
+    body: JSON.stringify(userData),
+  });
+}
+export async function viewWithdraw(formData) {
+  const userData = Object.fromEntries(formData);
+  await fetch(`${baseUrl}/mini-project/api/transactions/withdraw`, {
+    method: "PUT",
+    headers: await getHeaders(),
+    body: JSON.stringify(userData),
+  });
+}
+
+export async function transferToUser(formData, username) {
+  const userData = Object.fromEntries(formData);
+  await fetch(`${baseUrl}/mini-project/api/transactions/transfer/${username}`, {
+    method: "PUT",
+    headers: await getHeaders(),
+    body: JSON.stringify(userData),
+  });
 }
