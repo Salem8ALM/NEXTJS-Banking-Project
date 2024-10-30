@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "./components/NavBar";
+import { GeistSans } from "geist/font/sans";
 
 export const metadata = {
   title: "Bank Al-Falas",
@@ -8,8 +9,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="font-mono">
+    <html lang="en" className={GeistSans.className}>
+      <body>
         <Navbar />
         {children}
       </body>

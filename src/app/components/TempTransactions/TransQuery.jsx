@@ -1,30 +1,27 @@
-function TransQuery({ type, handleSearch, handleType }) {
+// In your TransQuery component
+function TransQuery({
+  type,
+  handleSearch,
+  handleType,
+  handleStartDateChange,
+  handleEndDateChange,
+}) {
   return (
-    <div className="mx-auto">
-      <div className="flex justify-start space-x-2 w-full font-primary">
-        <div className="flex flex-col items-start space-y-1 flex-grow">
-          <input
-            type="search"
-            placeholder="search"
-            className="text-gray-900 form-input border border-gray-300 w-full rounded-sm focus:border-palette-light focus:ring-palette-light"
-            onChange={handleSearch}
-          />
-        </div>
-        <div className="flex flex-col items-start space-y-1 flex-grow-0">
-          <select
-            onChange={handleType}
-            defaultValue={type}
-            className="form-select border border-gray-300 rounded-sm w-full text-gray-900 focus:border-palette-light focus:ring-palette-light"
-          >
-            <option value="all">All</option>
-            <option value="deposit">Deposits</option>
-            <option value="withdraw">Withdrawals</option>
-            <option value="transfer">Transfers</option>
-          </select>
-          {/* <p>
-            {format(parseISO(transaction.createdAt), "MMMM dd, yyyy, hh:mm a")}
-          </p> */}
-        </div>
+    <div className="flex flex-col gap-5">
+      <input type="search" placeholder="Search" onChange={handleSearch} />
+      <select value={type} onChange={handleType}>
+        <option value="all">All</option>
+        <option value="deposit">Deposits</option>
+        <option value="withdraw">Withdrawals</option>
+        <option value="transfer">Transfers</option>
+      </select>
+      <div>
+        <label htmlFor="start-date">Start Date:</label>
+        <input type="date" id="start-date" onChange={handleStartDateChange} />
+      </div>
+      <div>
+        <label htmlFor="end-date">End Date:</label>
+        <input type="date" id="end-date" onChange={handleEndDateChange} />
       </div>
     </div>
   );
