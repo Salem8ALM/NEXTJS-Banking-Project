@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ImageForUsers from "../ImageForUsers";
-import { baseUrl } from "@/actions/config";
+import PopupGfg from "../popup";
 
 function UserCard({ user }) {
   return (
@@ -14,12 +14,9 @@ function UserCard({ user }) {
         width={200}
         height={200}
       />
-      <Link
-        href={`/mini-project/api/transactions/transfer/${user.username}`}
-        className="border border-black px-5 py-1 rounded-md hover:bg-[black] hover:text-white"
-      >
-        Transfer
-      </Link>
+      <div className="flex justify-center">
+        <PopupGfg username={user.username} />
+      </div>
     </div>
   );
 }

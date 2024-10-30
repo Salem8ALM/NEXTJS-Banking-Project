@@ -21,6 +21,9 @@ function TransQuery({ type, handleSearch, handleType }) {
             <option value="withdraw">Withdrawals</option>
             <option value="transfer">Transfers</option>
           </select>
+          {/* <p>
+            {format(parseISO(transaction.createdAt), "MMMM dd, yyyy, hh:mm a")}
+          </p> */}
         </div>
       </div>
     </div>
