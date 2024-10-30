@@ -14,6 +14,7 @@ function TransItem({ transaction }) {
         <div className="text-lg text-gray-600 p-4 font-primary font-light">
           {transaction.type}
         </div>
+        {transaction.createdAt.split("T")[0]}
       </div>
     </div>
   );

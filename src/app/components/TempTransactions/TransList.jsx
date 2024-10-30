@@ -3,10 +3,12 @@
 import { useState } from "react";
 import TransQuery from "./TransQuery";
 import TransItem from "./TransItem";
+// import { format, parseISO, isSameDay } from "date-fns";
 
 function TransList({ transactions }) {
   const [query, setQuery] = useState("");
   const [type, setType] = useState("all");
+  //   const [date, setDate] = useState();
 
   function handleSearch(event) {
     setQuery(event.target.value);
@@ -20,6 +22,7 @@ function TransList({ transactions }) {
     .filter((transaction) => {
       const foundQuery = ("" + transaction.amount).startsWith(query);
       const isType = type === "all" || transaction.type === type;
+      //   const filterDate = !date || isSameDay(parseISO(transaction.createdAt), date)
       return isType && foundQuery;
     })
     .map((transaction) => (
