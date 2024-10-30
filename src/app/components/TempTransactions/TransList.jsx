@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import TransQuery from "./TransQuery";
-import TransItem from "./TransItem";
-// import { format, parseISO, isSameDay } from "date-fns";
+import { parseISO, isAfter, isSameDay, format } from "date-fns";
 
 function TransList({ transactions }) {
   const [query, setQuery] = useState("");
   const [type, setType] = useState("all");
-  //   const [date, setDate] = useState();
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
+  // Event handlers for filter controls
   function handleSearch(event) {
     setQuery(event.target.value);
   }
@@ -18,28 +18,127 @@ function TransList({ transactions }) {
     setType(event.target.value);
   }
 
-  const transactionsList = transactions
-    .filter((transaction) => {
-      const foundQuery = ("" + transaction.amount).startsWith(query);
-      const isType = type === "all" || transaction.type === type;
-      //   const filterDate = !date || isSameDay(parseISO(transaction.createdAt), date)
-      return isType && foundQuery;
-    })
-    .map((transaction) => (
-      <TransItem transaction={transaction} key={transaction._id} />
-    ));
+  function handleStartDateChange(event) {
+    setStartDate(event.target.value);
+  }
+
+  function handleEndDateChange(event) {
+    setEndDate(event.target.value);
+  }
+
+  // Filter transactions based on query, type, and date range
+  const filteredTransactions = transactions.filter((transaction) => {
+    const matchesQuery = transaction.amount.toString().startsWith(query);
+    const matchesType = type === "all" || transaction.type === type;
+
+    const transactionDate = parseISO(transaction.createdAt);
+    const inDateRange =
+      (!startDate || isAfter(transactionDate, parseISO(startDate))) &&
+      (!endDate || isSameDay(transactionDate, parseISO(endDate)));
+
+    return matchesQuery && matchesType && inDateRange;
+  });
 
   return (
-    <>
-      <TransQuery
-        type={type}
-        handleSearch={handleSearch}
-        handleType={handleType}
-      />
-      <div className="py-12 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
-        {transactionsList}
+    <div className="p-6 bg-gray-100 min-h-screen">
+      {/* Search and Filter Controls */}
+      <div className="mb-6 space-y-4">
+        <input
+          type="search"
+          placeholder="Search by amount"
+          value={query}
+          onChange={handleSearch}
+          className="p-2 border rounded w-full"
+        />
+        <div className="flex items-center space-x-4">
+          <span className="text-gray-700 font-medium">Filter:</span>
+          <label className="flex items-center space-x-1">
+            <input
+              type="radio"
+              name="type"
+              value="all"
+              checked={type === "all"}
+              onChange={handleType}
+            />
+            <span>All</span>
+          </label>
+          <label className="flex items-center space-x-1">
+            <input
+              type="radio"
+              name="type"
+              value="deposit"
+              checked={type === "deposit"}
+              onChange={handleType}
+            />
+            <span>Deposit</span>
+          </label>
+          <label className="flex items-center space-x-1">
+            <input
+              type="radio"
+              name="type"
+              value="withdraw"
+              checked={type === "withdraw"}
+              onChange={handleType}
+            />
+            <span>Withdraw</span>
+          </label>
+          <label className="flex items-center space-x-1">
+            <input
+              type="radio"
+              name="type"
+              value="transfer"
+              checked={type === "transfer"}
+              onChange={handleType}
+            />
+            <span>Transfer</span>
+          </label>
+        </div>
+        <div className="flex items-center space-x-4">
+          <div>
+            <label className="block text-gray-700 font-medium">
+              Start Date:
+            </label>
+            <input
+              type="date"
+              value={startDate}
+              onChange={handleStartDateChange}
+              className="p-2 border rounded w-full"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 font-medium">End Date:</label>
+            <input
+              type="date"
+              value={endDate}
+              onChange={handleEndDateChange}
+              className="p-2 border rounded w-full"
+            />
+          </div>
+        </div>
       </div>
-    </>
+
+      {/* Display Filtered Transactions */}
+      <div className="space-y-4">
+        {filteredTransactions.map((transaction) => (
+          <div
+            key={transaction._id}
+            className="flex justify-between items-center p-4 bg-white rounded shadow-md"
+          >
+            <span
+              className={`font-semibold ${
+                transaction.amount < 0 ? "text-red-500" : "text-green-500"
+              }`}
+            >
+              {transaction.amount < 0
+                ? `- $${Math.abs(transaction.amount)}`
+                : `+ $${transaction.amount}`}
+            </span>
+            <span>{format(parseISO(transaction.createdAt), "dd/MM/yyyy")}</span>
+            <span className="capitalize">{transaction.type}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
