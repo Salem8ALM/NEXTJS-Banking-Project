@@ -17,7 +17,7 @@ export async function login(formData) {
   const { token } = await response.json();
   await setToken(token);
   // Redirect to the `/transactions` page
-  redirect("/transactions");
+  redirect("/users/me");
 }
 
 export async function register(formData) {

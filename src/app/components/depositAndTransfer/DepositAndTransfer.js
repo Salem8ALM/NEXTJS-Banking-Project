@@ -29,7 +29,7 @@ function DepositAndTransfer() {
   };
 
   return (
-    <Tabs defaultValue="deposit" className="w-[400px] mx-auto">
+    <Tabs defaultValue="deposit" className="w-[400px] h-[930px] mx-auto">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="deposit">Deposit</TabsTrigger>
         <TabsTrigger value="withdraw">Withdraw</TabsTrigger>
