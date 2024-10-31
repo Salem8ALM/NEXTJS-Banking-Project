@@ -25,10 +25,9 @@ const Input = ({ label, type, name, placeholder }) => (
 export default function PopupGfg({ username }) {
   return (
     <div className="p-4">
-      <h4 className="text-lg font-bold mb-4">Next.js Popup - GeeksforGeeks</h4>
       <Popup
         trigger={
-          <button className="trigger-button bg-blue-500 text-white p-2 rounded">
+          <button className="trigger-button bg-[#274461] text-white font-bold transition-colors duration-150 hover:bg-slate-800 p-2 rounded">
             Transfer
           </button>
         }

@@ -1,14 +1,7 @@
 import React from "react";
 import { viewProfile } from "@/actions/auth";
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
-import { Avatar } from "@/components/ui/avatar";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { baseUrl } from "@/actions/config";
 import Image from "next/image";
@@ -18,31 +11,27 @@ async function Profile({ user }) {
   console.log(`${baseUrl}/${profile.image}`);
 
   return (
-    <div className="flex flex-col gap-5 items-center min-h-screen bg-secondary text-white py-6 px-4">
-      Header with User Info
+    <div className="flex flex-col gap-5 items-center min-h-screen bg-gray-200 text-white py-6 px-4">
       <div className="flex items-center justify-between w-full max-w-md mb-6">
         <div className="flex items-center space-x-3">
-          
-
           <div>
-            <h1 className="text-lg font-semibold">Welcome Back!</h1>
+            <h1 className="text-lg text-black font-semibold">Welcome Back!</h1>
           </div>
         </div>
       </div>
       {/* Balance Section */}
       <Card className="w-full max-w-md bg-primary rounded-lg p-4 mb-4 shadow-lg">
         <CardHeader className="flex items-center justify-between">
-          <h1 className="text-lg text-secondary font-semibold">Hello!</h1>
           <Image
             src={`${baseUrl}/${profile.image}`}
             alt="User Profile Picture"
             size={50}
             className="w-32 h-32 rounded-full object-cover shadow-md"
-        width={128}
-        height={128}
+            width={128}
+            height={128}
           />
           <h2 className="text-xl text-accent font-bold">{profile.username}</h2>
-          <CardTitle className="text-secondary">
+          <CardTitle className="text-black font-semibold">
             TOTAL AVAILABLE BALANCE
           </CardTitle>
         </CardHeader>
@@ -62,7 +51,7 @@ async function Profile({ user }) {
           <div className="flex justify-between items-center mt-4">
             <div>
               <p className="text-lg text-secondary font-medium">
-                Basic Account
+                Checking Account
               </p>
             </div>
             <div className="text-lg text-secondary font-semibold">
@@ -85,7 +74,7 @@ async function Profile({ user }) {
       {/* Savings Goals Progress */}
       <Card className="w-full max-w-md bg-primary rounded-lg p-4 mb-4 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-secondary">Savings Goals</CardTitle>
+          <CardTitle className="text-black">Savings Goals</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="mb-2">

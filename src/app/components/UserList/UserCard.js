@@ -1,27 +1,3 @@
-// import Link from "next/link";
-// import ImageForUsers from "../ImageForUsers";
-// import PopupGfg from "../popup";
-
-// function UserCard({ user }) {
-//   return (
-//     <div className="w-[300px] h-[400px]  border border-black rounded-md flex flex-col justify-between items-center p-4">
-//       <h1 className="text-md font-bold">{user.username}</h1>
-//       <p>{user.balance}</p>
-//       <ImageForUsers
-//         src={user.image}
-//         alt={`${user.username}-image`}
-//         className="w-[200px] rounded-md"
-//         width={200}
-//         height={200}
-//       />
-//       <div className="flex justify-center">
-//         <PopupGfg username={user.username} />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default UserCard;
 import Link from "next/link";
 import ImageForUsers from "../ImageForUsers";
 import PopupGfg from "../popup";
@@ -47,7 +23,7 @@ function UserCard({ user }) {
       {/* Action Button */}
       <div className="w-full">
         <PopupGfg username={user.username}>
-          <button className="w-full bg-accent text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+          <button className="w-full bg-[#274461] text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
             Transfer
           </button>
         </PopupGfg>

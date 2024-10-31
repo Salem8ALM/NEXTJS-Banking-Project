@@ -6,11 +6,10 @@ async function User() {
   // const transfer = await transferToUser();
 
   return (
-    <div className="bg-secondary min-h-screen h-screen flex items-center justify-center absolute inset-0 z-[-1]">
+    <div className="bg-gray-200 h-auto flex items-center justify-center inset-0 z-[-1] pt-10">
       <UserList users={users} />
     </div>
   );
 }
 
 export default User;
-

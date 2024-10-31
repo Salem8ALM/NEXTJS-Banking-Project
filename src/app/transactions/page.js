@@ -5,7 +5,6 @@ import { PieChart, Pie, Tooltip, Cell } from "recharts";
 import TransList from "../components/TempTransactions/TransList";
 import { transactionList } from "@/actions/auth";
 import DepositAndTransfer from "../components/depositAndTransfer/DepositAndTransfer";
-import background from "@/assets/pics/background.png"
 
 function TransactionsPage() {
   const [transactions, setTransactions] = useState([]);
@@ -42,7 +41,7 @@ function TransactionsPage() {
   }, []);
 
   return (
-    <div className="bg-secondary min-h-screen flex flex-col items-center justify-center p-4">
+    <div className="bg-gray-200 min-h-screen flex flex-col items-center justify-center">
       <div className="flex flex-col gap-4 w-full max-w-5xl">
         {/* Two Cards in a Row */}
 

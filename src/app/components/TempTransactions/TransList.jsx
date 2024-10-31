@@ -1,4 +1,3 @@
-
 "use client";
 import { useState } from "react";
 import { parseISO, isAfter, isSameDay, format } from "date-fns";
@@ -30,7 +29,6 @@ function TransList({ transactions }) {
   const filteredTransactions = transactions.filter((transaction) => {
     const matchesQuery = transaction.amount.toString().startsWith(query);
     const matchesType = type === "all" || transaction.type === type;
-
     const transactionDate = parseISO(transaction.createdAt);
     const inDateRange =
       (!startDate || isAfter(transactionDate, parseISO(startDate))) &&
@@ -106,7 +104,9 @@ function TransList({ transactions }) {
             />
           </div>
           <div>
-            <label className="block text-secondary font-medium">End Date:</label>
+            <label className="block text-secondary font-medium">
+              End Date:
+            </label>
             <input
               type="date"
               value={endDate}
@@ -126,12 +126,14 @@ function TransList({ transactions }) {
           >
             <span
               className={`font-semibold ${
-                transaction.amount < 0 ? "text-red-500" : "text-green-500"
+                transaction.type === "withdraw"
+                  ? "text-red-700"
+                  : "text-green-500"
               }`}
             >
-              {transaction.amount < 0
-                ? `- $${Math.abs(transaction.amount)}`
-                : `+ $${transaction.amount}`}
+              {transaction.type === "withdraw"
+                ? `- ${transaction.amount} KD`
+                : `+ ${transaction.amount} KD`}
             </span>
             <span>{format(parseISO(transaction.createdAt), "dd/MM/yyyy")}</span>
             <span className="capitalize">{transaction.type}</span>

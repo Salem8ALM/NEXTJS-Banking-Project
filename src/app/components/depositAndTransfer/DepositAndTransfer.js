@@ -29,7 +29,7 @@ function DepositAndTransfer() {
   };
 
   return (
-    <Tabs defaultValue="deposit" className="w-[400px] h-[930px] mx-auto">
+    <Tabs defaultValue="deposit" className="w-[550px] h-[930px] mx-auto">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="deposit">Deposit</TabsTrigger>
         <TabsTrigger value="withdraw">Withdraw</TabsTrigger>
@@ -53,7 +53,7 @@ function DepositAndTransfer() {
                   variant="outline"
                   className="text-sm"
                 >
-                  ${amount}
+                  {amount}KD
                 </Button>
               ))}
             </div>
@@ -64,6 +64,7 @@ function DepositAndTransfer() {
                   id="deposit"
                   type="number"
                   name="amount"
+                  placeholder="Enter the amount"
                   value={depositAmount}
                   onChange={(e) => setDepositAmount(e.target.value)}
                   className="text-black"
@@ -71,7 +72,7 @@ function DepositAndTransfer() {
               </div>
               <CardFooter>
                 <Button type="submit" className="w-full">
-                  Submit Deposit
+                  Deposit
                 </Button>
               </CardFooter>
             </form>
@@ -97,7 +98,7 @@ function DepositAndTransfer() {
                   variant="outline"
                   className="text-sm"
                 >
-                  ${amount}
+                  {amount}KD
                 </Button>
               ))}
             </div>
@@ -108,6 +109,7 @@ function DepositAndTransfer() {
                   id="withdraw"
                   type="number"
                   name="amount"
+                  placeholder="Enter the amount"
                   value={withdrawAmount}
                   onChange={(e) => setWithdrawAmount(e.target.value)}
                   className="text-black"
@@ -115,7 +117,7 @@ function DepositAndTransfer() {
               </div>
               <CardFooter>
                 <Button type="submit" className="w-full">
-                  Submit Withdraw
+                  Withdraw
                 </Button>
               </CardFooter>
             </form>
