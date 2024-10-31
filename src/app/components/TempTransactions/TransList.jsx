@@ -1,5 +1,5 @@
-"use client";
 
+"use client";
 import { useState } from "react";
 import { parseISO, isAfter, isSameDay, format } from "date-fns";
 
@@ -40,9 +40,9 @@ function TransList({ transactions }) {
   });
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="space-y-4">
       {/* Search and Filter Controls */}
-      <div className="mb-6 space-y-4">
+      <div className="space-y-4">
         <input
           type="search"
           placeholder="Search by amount"
@@ -52,7 +52,7 @@ function TransList({ transactions }) {
         />
         <div className="flex items-center space-x-4">
           <span className="text-gray-700 font-medium">Filter:</span>
-          <label className="flex items-center space-x-1">
+          <label className="flex items-center text-secondary space-x-1">
             <input
               type="radio"
               name="type"
@@ -62,7 +62,7 @@ function TransList({ transactions }) {
             />
             <span>All</span>
           </label>
-          <label className="flex items-center space-x-1">
+          <label className="flex items-center text-secondary space-x-1">
             <input
               type="radio"
               name="type"
@@ -72,7 +72,7 @@ function TransList({ transactions }) {
             />
             <span>Deposit</span>
           </label>
-          <label className="flex items-center space-x-1">
+          <label className="flex items-center text-secondary space-x-1">
             <input
               type="radio"
               name="type"
@@ -82,7 +82,7 @@ function TransList({ transactions }) {
             />
             <span>Withdraw</span>
           </label>
-          <label className="flex items-center space-x-1">
+          <label className="flex items-center text-secondary space-x-1">
             <input
               type="radio"
               name="type"
@@ -95,7 +95,7 @@ function TransList({ transactions }) {
         </div>
         <div className="flex items-center space-x-4">
           <div>
-            <label className="block text-gray-700 font-medium">
+            <label className="block text-secondary font-medium">
               Start Date:
             </label>
             <input
@@ -106,7 +106,7 @@ function TransList({ transactions }) {
             />
           </div>
           <div>
-            <label className="block text-gray-700 font-medium">End Date:</label>
+            <label className="block text-secondary font-medium">End Date:</label>
             <input
               type="date"
               value={endDate}
@@ -118,7 +118,7 @@ function TransList({ transactions }) {
       </div>
 
       {/* Display Filtered Transactions */}
-      <div className="space-y-4">
+      <div className="space-y-2">
         {filteredTransactions.map((transaction) => (
           <div
             key={transaction._id}
